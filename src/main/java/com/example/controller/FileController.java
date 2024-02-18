@@ -44,11 +44,12 @@ public class FileController {
         }
         String fileName = file.getOriginalFilename();
         try {
-            if (!FileUtil.isDirectory(filePath)) {
+         /*   if (!FileUtil.isDirectory(filePath)) {
                 FileUtil.mkdir(filePath);
-            }
+            }*/
             // 文件存储形式：时间戳-文件名
-            FileUtil.writeBytes(file.getBytes(), filePath + flag + "-" + fileName);  // ***/manager/files/1697438073596-avatar.png
+            String path = this.getClass().getClassLoader().getResource("").getPath();
+            FileUtil.writeBytes(file.getBytes(), path + "files/" + flag + "-" + fileName);  // ***/manager/files/1697438073596-avatar.png
             System.out.println(fileName + "--上传成功");
 
         } catch (Exception e) {

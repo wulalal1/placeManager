@@ -1,122 +1,84 @@
 package com.example.entity;
 
-import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-public class Place extends Account implements Serializable {
+import java.io.Serializable;
+import java.util.Date;
+/**
+ * @description place
+ * @author Whhh
+ * @date 2024-02-13
+ */
+@Data
+@EqualsAndHashCode
+public class Place implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
-    /** ID */
-    private Integer id;
-    /** 账号 */
-    private String username;
-    /** 密码 */
-    private String password;
-    /** 用户名称 */
-    private String name;
-    /** 电话 */
-    private String phone;
-    /** 邮箱 */
-    private String email;
-    /** 场地图片 */
-    private String avatar;
+    /**
+     * ID
+     */
+    private String id;
 
-    @Override
-    public Integer getId() {
-        return id;
-    }
+    /**
+     * 场地编号
+     */
+    private String placeCode;
 
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    /**
+     * 场地名称
+     */
+    private String placeName;
 
-    @Override
-    public String getUsername() {
-        return username;
-    }
+    /**
+     * 场地长
+     */
+    private String placeLong;
 
-    @Override
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    /**
+     * 场地宽
+     */
+    private String placeWide;
 
-    @Override
-    public String getPassword() {
-        return password;
-    }
+    /**
+     * 场地性质
+     */
+    private String placeNature;
 
-    @Override
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    /**
+     * 场地费用
+     */
+    private String placeCharge;
 
-    @Override
-    public String getName() {
-        return name;
-    }
+    /**
+     * 开始时间
+     */
+    private Date startTime;
 
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
+    /**
+     * 结束时间
+     */
+    private Date endTime;
 
-    public String getPhone() {
-        return phone;
-    }
+    /**
+     * 场地状态
+     */
+    private String placeSatus;
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+    /**
+     * 场地归属者
+     */
+    private String placeOwner;
 
-    public String getEmail() {
-        return email;
-    }
+    /**
+     * 场地图片
+     */
+    private String placeAvatar;
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    /**
+     * 备注
+     */
+    private String remarks;
 
-    @Override
-    public String getAvatar() {
-        return avatar;
-    }
-
-    @Override
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    /** 角色标识 */
-
-    /** 官网 */
-    private String url;
-    /** 介绍 */
-    private String description;
-    /** 审核状态 */
-    private String status;
 }

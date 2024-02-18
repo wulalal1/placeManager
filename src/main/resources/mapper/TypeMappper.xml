@@ -9,7 +9,7 @@
     </sql>
 
     <select id="selectAll" resultType="com.example.entity.Type">
-        select type.*, place.name as placeName from type
+        select type.*, place.place_name as placeName from type
         left join place on type.place_id = place.id
         <where>
             <if test="id != null"> and id = #{id}</if>

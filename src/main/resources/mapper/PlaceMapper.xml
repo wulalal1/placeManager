@@ -1,104 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.PlaceMapper">
 
-    <sql id="Base_Column_List">
-        id,username,password,name,phone,email,avatar,role,url,description,status
-    </sql>
-    <select id="selectAll" resultType="com.example.entity.Place">
-        select
-        <include refid="Base_Column_List" />
-        from place
-        <where>
-            <if test="id != null"> and id = #{id}</if>
-            <if test="username != null"> and username like concat('%', #{username}, '%')</if>
-            <if test="password != null"> and password = #{password}</if>
-            <if test="name != null"> and name = #{name}</if>
-            <if test="phone != null"> and phone = #{phone}</if>
-            <if test="email != null"> and email= #{email}</if>
-            <if test="avatar != null"> and avatar = #{avatar}</if>
-            <if test="role != null"> and role = #{role}</if>
-            <if test="url != null"> and url = #{url}</if>
-            <if test="description != null"> and description = #{description}</if>
-            <if test="status != null"> and status = #{status}</if>
-        </where>
-    </select>
-<!--    <select id="selectById" resultType="com.example.entity.Place">-->
-<!--        select-->
-<!--            *-->
-<!--        from place-->
-<!--        where place.id = #{id}-->
-<!--    </select>-->
+    <resultMap id="BaseResultMap" type="com.example.entity.Place" >
+        <result column="id" property="id" />
+        <result column="place_code" property="placeCode" />
+        <result column="place_name" property="placeName" />
+        <result column="place_long" property="placeLong" />
+        <result column="place_wide" property="placeWide" />
+        <result column="place_nature" property="placeNature" />
+        <result column="place_charge" property="placeCharge" />
+        <result column="start_time" property="startTime" />
+        <result column="end_time" property="endTime" />
+        <result column="place_satus" property="placeSatus" />
+        <result column="place_owner" property="placeOwner" />
+        <result column="place_avatar" property="placeAvatar" />
+        <result column="remarks" property="remarks" />
+    </resultMap>
 
-    <insert id="insert" parameterType="com.example.entity.Place" useGeneratedKeys="true">
-        insert into place
+    <sql id="Base_Column_List">
+                id,
+                place_code,
+                place_name,
+                place_long,
+                place_wide,
+                place_nature,
+                place_charge,
+                start_time,
+                end_time,
+                place_satus,
+                place_owner,
+                place_avatar,
+                remarks
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="com.example.entity.Place">
+        INSERT INTO place
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">id,</if>
-            <if test="username != null">username,</if>
-            <if test="password != null">password,</if>
-            <if test="name != null">name,</if>
-            <if test="phone != null">phone,</if>
-            <if test="email != null">email,</if>
-            <if test="avatar != null">avatar,</if>
-            <if test="role != null">role,</if>
-            <if test="url != null">url,</if>
-            <if test="description != null">description,</if>
-            <if test="status != null">status,</if>
+            <if test="null != placeCode and '' != placeCode">
+                place_code,
+            </if>
+            <if test="null != placeName and '' != placeName">
+                place_name,
+            </if>
+            <if test="null != placeLong and '' != placeLong">
+                place_long,
+            </if>
+            <if test="null != placeWide and '' != placeWide">
+                place_wide,
+            </if>
+            <if test="null != placeNature and '' != placeNature">
+                place_nature,
+            </if>
+            <if test="null != placeCharge and '' != placeCharge">
+                place_charge,
+            </if>
+            <if test="null != startTime ">
+                start_time,
+            </if>
+            <if test="null != endTime ">
+                end_time,
+            </if>
+            <if test="null != placeSatus and '' != placeSatus">
+                place_satus,
+            </if>
+            <if test="null != placeOwner and '' != placeOwner">
+                place_owner,
+            </if>
+            <if test="null != placeAvatar and '' != placeAvatar">
+                place_avatar,
+            </if>
+            <if test="null != remarks and '' != remarks">
+                remarks
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">#{id},</if>
-            <if test="username != null">#{username},</if>
-            <if test="password != null">#{password},</if>
-            <if test="name != null">#{name},</if>
-            <if test="phone != null">#{phone},</if>
-            <if test="email != null">#{email},</if>
-            <if test="avatar != null">#{avatar},</if>
-            <if test="role != null">#{role},</if>
-            <if test="url != null">#{url},</if>
-            <if test="description != null">#{description},</if>
-            <if test="status != null">#{status},</if>
+            <if test="null != placeCode and '' != placeCode">
+                #{placeCode},
+            </if>
+            <if test="null != placeName and '' != placeName">
+                #{placeName},
+            </if>
+            <if test="null != placeLong and '' != placeLong">
+                #{placeLong},
+            </if>
+            <if test="null != placeWide and '' != placeWide">
+                #{placeWide},
+            </if>
+            <if test="null != placeNature and '' != placeNature">
+                #{placeNature},
+            </if>
+            <if test="null != placeCharge and '' != placeCharge">
+                #{placeCharge},
+            </if>
+            <if test="null != startTime ">
+                #{startTime},
+            </if>
+            <if test="null != endTime ">
+                #{endTime},
+            </if>
+            <if test="null != placeSatus and '' != placeSatus">
+                #{placeSatus},
+            </if>
+            <if test="null != placeOwner and '' != placeOwner">
+                #{placeOwner},
+            </if>
+            <if test="null != placeAvatar and '' != placeAvatar">
+                #{placeAvatar},
+            </if>
+            <if test="null != remarks and '' != remarks">
+                #{remarks}
+            </if>
         </trim>
     </insert>
 
-    <update id="updateById" parameterType="com.example.entity.Place">
-        update place
+    <delete id="delete" >
+        DELETE FROM place
+        WHERE id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.example.entity.Place">
+        UPDATE place
         <set>
-            <if test="username != null">
-                username = #{username},
-            </if>
-            <if test="password != null">
-                password = #{password},
-            </if>
-            <if test="name != null">
-                name = #{name},
-            </if>
-            <if test="phone != null">
-                phone = #{phone},
-            </if>
-            <if test="email != null">
-                email = #{email},
-            </if>
-            <if test="avatar != null">
-                avatar = #{avatar},
-            </if>
-            <if test="role != null">
-                role = #{role},
-            </if>
-            <if test="url != null">
-                url = #{url},
-            </if>
-            <if test="description != null">
-                description = #{description},
-            </if>
-            <if test="status != null">
-                status = #{status},
-            </if>
+            <if test="null != placeCode and '' != placeCode">place_code = #{placeCode},</if>
+            <if test="null != placeName and '' != placeName">place_name = #{placeName},</if>
+            <if test="null != placeLong and '' != placeLong">place_long = #{placeLong},</if>
+            <if test="null != placeWide and '' != placeWide">place_wide = #{placeWide},</if>
+            <if test="null != placeNature and '' != placeNature">place_nature = #{placeNature},</if>
+            <if test="null != placeCharge and '' != placeCharge">place_charge = #{placeCharge},</if>
+            <if test="null != startTime ">start_time = #{startTime},</if>
+            <if test="null != endTime ">end_time = #{endTime},</if>
+            <if test="null != placeSatus and '' != placeSatus">place_satus = #{placeSatus},</if>
+            <if test="null != placeOwner and '' != placeOwner">place_owner = #{placeOwner},</if>
+            <if test="null != placeAvatar and '' != placeAvatar">place_avatar = #{placeAvatar},</if>
+            <if test="null != remarks and '' != remarks">remarks = #{remarks}</if>
         </set>
-        where id = #{id}
+        WHERE id = #{id}
     </update>
 
 
+    <select id="load" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM place
+        WHERE id = #{id}
+    </select>
+
+    <select id="pageList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM place
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="pageListCount" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM place
+    </select>
 
 </mapper>

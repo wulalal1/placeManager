@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ReservationMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.entity.Reservation" >
+        <result column="id" property="id" />
+        <result column="place_code" property="placeCode" />
+        <result column="start_time" property="startTime" />
+        <result column="end_time" property="endTime" />
+        <result column="reservation_name" property="reservationName" />
+        <result column="reservation_p_name" property="reservationPName" />
+        <result column="reservation_p_phone" property="reservationPPhone" />
+        <result column="reservation_status" property="reservationStatus" />
+        <result column="reservation_reason" property="reservationReason" />
+        <result column="reservation_qx_reason" property="reservationQxReason" />
+        <result column="reservation_type" property="reservationType" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                id,
+                place_code,
+                start_time,
+                end_time,
+                reservation_name,
+                reservation_p_name,
+                reservation_p_phone,
+                reservation_status,
+                reservation_reason,
+                reservation_qx_reason,
+                reservation_type
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="com.example.entity.Reservation">
+        INSERT INTO reservation
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="null != placeCode and '' != placeCode">
+                place_code,
+            </if>
+            <if test="null != startTime ">
+                start_time,
+            </if>
+            <if test="null != endTime ">
+                end_time,
+            </if>
+            <if test="null != reservationName and '' != reservationName">
+                reservation_name,
+            </if>
+            <if test="null != reservationPName and '' != reservationPName">
+                reservation_p_name,
+            </if>
+            <if test="null != reservationPPhone and '' != reservationPPhone">
+                reservation_p_phone,
+            </if>
+            <if test="null != reservationStatus and '' != reservationStatus">
+                reservation_status,
+            </if>
+            <if test="null != reservationReason and '' != reservationReason">
+                reservation_reason,
+            </if>
+            <if test="null != reservationQxReason and '' != reservationQxReason">
+                reservation_qx_reason,
+            </if>
+            <if test="null != reservationType and '' != reservationType">
+                reservation_type
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="null != placeCode and '' != placeCode">
+                #{placeCode},
+            </if>
+            <if test="null != startTime ">
+                #{startTime},
+            </if>
+            <if test="null != endTime ">
+                #{endTime},
+            </if>
+            <if test="null != reservationName and '' != reservationName">
+                #{reservationName},
+            </if>
+            <if test="null != reservationPName and '' != reservationPName">
+                #{reservationPName},
+            </if>
+            <if test="null != reservationPPhone and '' != reservationPPhone">
+                #{reservationPPhone},
+            </if>
+            <if test="null != reservationStatus and '' != reservationStatus">
+                #{reservationStatus},
+            </if>
+            <if test="null != reservationReason and '' != reservationReason">
+                #{reservationReason},
+            </if>
+            <if test="null != reservationQxReason and '' != reservationQxReason">
+                #{reservationQxReason},
+            </if>
+            <if test="null != reservationType and '' != reservationType">
+                #{reservationType}
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" >
+        DELETE FROM reservation
+        WHERE id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.example.entity.Reservation">
+        UPDATE reservation
+        <set>
+            <if test="null != placeCode and '' != placeCode">place_code = #{placeCode},</if>
+            <if test="null != startTime ">start_time = #{startTime},</if>
+            <if test="null != endTime ">end_time = #{endTime},</if>
+            <if test="null != reservationName and '' != reservationName">reservation_name = #{reservationName},</if>
+            <if test="null != reservationPName and '' != reservationPName">reservation_p_name = #{reservationPName},</if>
+            <if test="null != reservationPPhone and '' != reservationPPhone">reservation_p_phone = #{reservationPPhone},</if>
+            <if test="null != reservationStatus and '' != reservationStatus">reservation_status = #{reservationStatus},</if>
+            <if test="null != reservationReason and '' != reservationReason">reservation_reason = #{reservationReason},</if>
+            <if test="null != reservationQxReason and '' != reservationQxReason">reservation_qx_reason = #{reservationQxReason},</if>
+            <if test="null != reservationType and '' != reservationType">reservation_type = #{reservationType}</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+
+    <select id="load" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM reservation
+        WHERE id = #{id}
+    </select>
+
+    <select id="pageList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM reservation
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="pageListCount" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM reservation
+    </select>
+
+</mapper>
