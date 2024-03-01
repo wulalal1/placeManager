@@ -45,7 +45,7 @@ public class PlaceController {
     @DeleteMapping("/delete/batch")
     public Result delete(@RequestBody List<Integer> ids) {
         AtomicInteger res = new AtomicInteger();
-        ids.forEach(id->{
+        ids.forEach(id -> {
             res.set((int) placeService.delete(id));
         });
 
@@ -88,10 +88,10 @@ public class PlaceController {
      * @date 2024/02/13
      **/
     @RequestMapping("/pageList")
-    public Result selectPage(Place place,
+    public Result selectPage(
                              @RequestParam(defaultValue = "1") Integer pageNum,
                              @RequestParam(defaultValue = "10") Integer pageSize) {
-        PageInfo<Place> page = placeService.pageList(pageNum, pageSize);
+        PageInfo<Place> page = placeService.pageList( pageNum, pageSize);
         return Result.success(page);
     }
 
@@ -103,7 +103,7 @@ public class PlaceController {
      **/
     @RequestMapping("/selectAll")
     public Result selectAll() {
-        return Result.success(placeService.selectAll());
+            return Result.success(placeService.selectAll());
     }
 
 }

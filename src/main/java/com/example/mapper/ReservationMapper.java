@@ -23,6 +23,7 @@ public interface ReservationMapper {
      **/
     int insert(Reservation reservation);
 
+
     /**
      * 刪除
      * @author Whhh
@@ -61,4 +62,14 @@ public interface ReservationMapper {
     @Select("select * from reservation")
     List<Reservation> selectAll();
 
+
+    @Select("select * from reservation where place_code = #{placeCode}")
+    Reservation selectByPlaceCode(String placeCode);
+
+    @Select("select * from reservation where user_id = #{userId} order by end_time desc ")
+    List<Reservation> selectMyOrder(int userid);
+
+//    @Select("select * from reservation where end_time >= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) and user_id = #{userId} ")
+    @Select("select * from reservation where end_time < CURRENT_DATE() and user_id = #{userId} order by end_time desc")
+    List<Reservation> selectHisOrder(int userid);
 }

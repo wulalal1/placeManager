@@ -58,6 +58,11 @@ public class Reservation implements Serializable {
     private String reservationStatus;
 
     /**
+     * 用户表外键
+     */
+    private Integer userId;
+
+    /**
      * 预约原因
      */
     private String reservationReason;

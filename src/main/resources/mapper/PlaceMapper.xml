@@ -139,6 +139,21 @@
         WHERE id = #{id}
     </update>
 
+<!--    <select id="selectAll" resultType="com.example.entity.Place">-->
+<!--        select-->
+<!--        <include refid="Base_Column_List" />-->
+<!--        from place-->
+<!--        <where>-->
+<!--            <if test="id != null"> and id= #{id}</if>-->
+<!--            <if test="placeCode != null"> and place_code=#{placeCode}</if>-->
+<!--            <if test="password != null"> and password= #{password}</if>-->
+<!--            <if test="name != null"> and name= #{name}</if>-->
+<!--            <if test="phone != null"> and phone= #{phone}</if>-->
+<!--            <if test="email != null"> and email= #{email}</if>-->
+<!--            <if test="avatar != null"> and avatar= #{avatar}</if>-->
+<!--            <if test="role != null"> and role= #{role}</if>-->
+<!--        </where>-->
+<!--    </select>-->
 
     <select id="load" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List" />
