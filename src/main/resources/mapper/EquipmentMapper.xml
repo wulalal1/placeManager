@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.EquipmentMapper">
+    
+    <resultMap type="com.example.domain.Equipment" id="EquipmentResult">
+        <result property="id"    column="id"    />
+        <result property="equipCode"    column="equip_code"    />
+        <result property="equipName"    column="equip_name"    />
+        <result property="equipType"    column="equip_type"    />
+        <result property="price"    column="price"    />
+        <result property="equipPicture"    column="equip_picture"    />
+        <result property="longth"    column="longth"    />
+        <result property="width"    column="width"    />
+        <result property="high"    column="high"    />
+        <result property="weight"    column="weight"    />
+        <result property="number"    column="number"    />
+        <result property="status"    column="status"    />
+        <result property="producer"    column="producer"    />
+        <result property="purchasingDate"    column="purchasing_date"    />
+        <result property="remarks"    column="remarks"    />
+    </resultMap>
+
+    <sql id="selectEquipmentVo">
+        select id, equip_code, equip_name, equip_type, price, equip_picture, longth, width, high, weight, number, status, producer, purchasing_date, remarks from equipment
+    </sql>
+
+    <select id="selectEquipmentList" parameterType="com.example.domain.Equipment" resultMap="EquipmentResult">
+        <include refid="selectEquipmentVo"/>
+        <where>  
+            <if test="equipCode != null  and equipCode != ''"> and equip_code = #{equipCode}</if>
+            <if test="equipName != null  and equipName != ''"> and equip_name like concat('%', #{equipName}, '%')</if>
+            <if test="equipType != null  and equipType != ''"> and equip_type = #{equipType}</if>
+            <if test="price != null "> and price = #{price}</if>
+            <if test="equipPicture != null  and equipPicture != ''"> and equip_picture = #{equipPicture}</if>
+            <if test="longth != null  and longth != ''"> and longth = #{longth}</if>
+            <if test="width != null  and width != ''"> and width = #{width}</if>
+            <if test="high != null  and high != ''"> and high = #{high}</if>
+            <if test="weight != null "> and weight = #{weight}</if>
+            <if test="number != null "> and number = #{number}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="producer != null  and producer != ''"> and producer = #{producer}</if>
+            <if test="purchasingDate != null "> and purchasing_date = #{purchasingDate}</if>
+            <if test="remarks != null  and remarks != ''"> and remarks = #{remarks}</if>
+        </where>
+    </select>
+    
+    <select id="selectEquipmentById" parameterType="Long" resultMap="EquipmentResult">
+        <include refid="selectEquipmentVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertEquipment" parameterType="com.example.domain.Equipment">
+        insert into equipment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="equipCode != null and equipCode != ''">equip_code,</if>
+            <if test="equipName != null and equipName != ''">equip_name,</if>
+            <if test="equipType != null">equip_type,</if>
+            <if test="price != null">price,</if>
+            <if test="equipPicture != null">equip_picture,</if>
+            <if test="longth != null">longth,</if>
+            <if test="width != null">width,</if>
+            <if test="high != null">high,</if>
+            <if test="weight != null">weight,</if>
+            <if test="number != null">number,</if>
+            <if test="status != null">status,</if>
+            <if test="producer != null">producer,</if>
+            <if test="purchasingDate != null">purchasing_date,</if>
+            <if test="remarks != null">remarks,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="equipCode != null and equipCode != ''">#{equipCode},</if>
+            <if test="equipName != null and equipName != ''">#{equipName},</if>
+            <if test="equipType != null">#{equipType},</if>
+            <if test="price != null">#{price},</if>
+            <if test="equipPicture != null">#{equipPicture},</if>
+            <if test="longth != null">#{longth},</if>
+            <if test="width != null">#{width},</if>
+            <if test="high != null">#{high},</if>
+            <if test="weight != null">#{weight},</if>
+            <if test="number != null">#{number},</if>
+            <if test="status != null">#{status},</if>
+            <if test="producer != null">#{producer},</if>
+            <if test="purchasingDate != null">#{purchasingDate},</if>
+            <if test="remarks != null">#{remarks},</if>
+         </trim>
+    </insert>
+
+    <update id="updateEquipment" parameterType="com.example.domain.Equipment">
+        update equipment
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="equipCode != null and equipCode != ''">equip_code = #{equipCode},</if>
+            <if test="equipName != null and equipName != ''">equip_name = #{equipName},</if>
+            <if test="equipType != null">equip_type = #{equipType},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="equipPicture != null">equip_picture = #{equipPicture},</if>
+            <if test="longth != null">longth = #{longth},</if>
+            <if test="width != null">width = #{width},</if>
+            <if test="high != null">high = #{high},</if>
+            <if test="weight != null">weight = #{weight},</if>
+            <if test="number != null">number = #{number},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="producer != null">producer = #{producer},</if>
+            <if test="purchasingDate != null">purchasing_date = #{purchasingDate},</if>
+            <if test="remarks != null">remarks = #{remarks},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteEquipmentById" parameterType="Long">
+        delete from equipment where id = #{id}
+    </delete>
+
+    <delete id="deleteEquipmentByIds" parameterType="String">
+        delete from equipment where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

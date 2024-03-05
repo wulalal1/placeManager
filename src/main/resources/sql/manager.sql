@@ -11,7 +11,7 @@
  Target Server Version : 80027
  File Encoding         : 65001
 
- Date: 01/03/2024 20:18:13
+ Date: 05/03/2024 21:39:49
 */
 
 SET NAMES utf8mb4;
@@ -108,7 +108,7 @@ CREATE TABLE `collect`  (
   `user_id` int(0) DEFAULT NULL COMMENT '点赞人ID',
   `module` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '模块',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '收藏' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 40 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '收藏' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of collect
@@ -131,7 +131,7 @@ CREATE TABLE `comment`  (
   `fid` int(0) DEFAULT NULL COMMENT '关联ID',
   `module` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '模块',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '评论表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '评论表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of comment
@@ -143,6 +143,34 @@ INSERT INTO `comment` VALUES (7, '工资最好的就是摆烂', 13, NULL, 7, '20
 INSERT INTO `comment` VALUES (20, 'hhhhhh ', 10, NULL, 20, '2024-01-27 13:43:09', 12, '博客');
 INSERT INTO `comment` VALUES (21, 'hhhhh \n', 10, NULL, 21, '2024-01-27 13:47:50', 23, '博客');
 INSERT INTO `comment` VALUES (22, '话语权', NULL, NULL, 22, '2024-01-27 14:04:59', 12, '博客');
+
+-- ----------------------------
+-- Table structure for equipment
+-- ----------------------------
+DROP TABLE IF EXISTS `equipment`;
+CREATE TABLE `equipment`  (
+  `id` int(0) NOT NULL COMMENT '序号',
+  `equip_code` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '器材编号',
+  `equip_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '器材名称',
+  `equip_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '器材类型',
+  `price` decimal(10, 2) DEFAULT NULL COMMENT '单价',
+  `equip_picture` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '器材图片',
+  `longth` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '长度',
+  `width` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '宽度',
+  `high` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '高度',
+  `weight` double DEFAULT NULL COMMENT '重量',
+  `number` int(0) DEFAULT NULL COMMENT '数量',
+  `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT ' 状态(借出/未借出)',
+  `producer` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '生产厂家',
+  `purchasing_date` datetime(0) DEFAULT NULL COMMENT '购买日期',
+  `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of equipment
+-- ----------------------------
+INSERT INTO `equipment` VALUES (1, 'ck00123', '羽毛球拍', '1', 25.60, 'http://localhost:9090/files/1709643728979-微信截图_20240303221827.png', '11', '12', '4', 60, 55, '1', '几个号', '2024-03-04 08:00:00', '524');
 
 -- ----------------------------
 -- Table structure for likes
@@ -224,10 +252,10 @@ CREATE TABLE `place`  (
 -- ----------------------------
 -- Records of place
 -- ----------------------------
-INSERT INTO `place` VALUES (10, 'CDBH681805769095684096', '北京五棵松体育馆', '100', '100', '0', '500', '2024-02-13 00:00:00', '2024-02-14 00:00:00', '1', '测试', 'http://localhost:9090/files/1707829578831-场地2.jpg', '1');
-INSERT INTO `place` VALUES (11, 'CDBH681840915500933120', '北京鸟巢羽毛球馆', '200', '800', '2', '69999', NULL, NULL, '1', '个人', 'http://localhost:9090/files/1707829590562-场地2.jpg', 'ces');
-INSERT INTO `place` VALUES (12, 'CDBH681853130211762176', '北京大学羽毛球场馆', '1000', '2000', '0', '2666', NULL, NULL, '1', '个人', 'http://localhost:9090/files/1707830478680-场地1.jpg', 'ces');
-INSERT INTO `place` VALUES (13, 'CDBH682593753650864128', '清华大学羽毛球场馆', '133', '2333', '0', '245', NULL, NULL, '1', '个人', 'http://localhost:9090/files/1708007064068-场地1.jpg', '测试');
+INSERT INTO `place` VALUES (10, 'CDBH681805769095684096', '场馆一', '100', '100', '0', '500', '2024-02-13 00:00:00', '2024-02-14 00:00:00', '1', '测试', 'http://localhost:9090/files/1709643999153-20111121154530F6C.jpg', '1');
+INSERT INTO `place` VALUES (11, 'CDBH681840915500933120', '场馆二', '200', '800', '2', '69999', NULL, NULL, '1', '个人', 'http://localhost:9090/files/1709644007085-1631243526276707.jpg', 'ces');
+INSERT INTO `place` VALUES (12, 'CDBH681853130211762176', '场馆三', '1000', '2000', '0', '2666', NULL, NULL, '1', '个人', 'http://localhost:9090/files/1709644019369-30744973179935518.jpg', 'ces');
+INSERT INTO `place` VALUES (13, 'CDBH682593753650864128', '场馆四', '133', '2333', '0', '245', NULL, NULL, '1', '个人', 'http://localhost:9090/files/1709644025383-1666684130274080294.jpg', '测试');
 
 -- ----------------------------
 -- Table structure for reservation
@@ -247,7 +275,7 @@ CREATE TABLE `reservation`  (
   `reservation_qx_reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '预约取消原因',
   `reservation_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '预约类型',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of reservation
@@ -289,7 +317,7 @@ CREATE TABLE `type`  (
 INSERT INTO `type` VALUES (2, '对外羽毛球馆', '训练专用场地', 2, '10', 'http://localhost:9090/files/1705924457443-1702606278820-微信截图_20231117155415.png');
 INSERT INTO `type` VALUES (3, '123', '比赛专用场地', 0, '11', 'http://localhost:9090/files/1705925652421-1702437658057-微信截图_20231114162539.png');
 INSERT INTO `type` VALUES (8, '21', '训练专用场地', 0, '12', 'http://localhost:9090/files/1706515367926-1702606681313-微信截图_20231117155534.png');
-INSERT INTO `type` VALUES (9, '656512', '比赛专用场地', 0, '13', NULL);
+INSERT INTO `type` VALUES (9, '656512', '比赛专用场地', 0, '13', 'http://localhost:9090/files/1709643988428-30744973179935518.jpg');
 
 -- ----------------------------
 -- Table structure for user
