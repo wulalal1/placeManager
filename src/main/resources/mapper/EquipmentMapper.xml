@@ -32,12 +32,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="equipCode != null  and equipCode != ''"> and equip_code = #{equipCode}</if>
             <if test="equipName != null  and equipName != ''"> and equip_name like concat('%', #{equipName}, '%')</if>
             <if test="equipType != null  and equipType != ''"> and equip_type = #{equipType}</if>
-<!--            <if test="equipType != null and equipType.length > 0">-->
-<!--                AND equip_type in-->
-<!--                <foreach collection="equipType" item="businessType" open="(" separator="," close=")">-->
-<!--                    #{businessType}-->
-<!--                </foreach>-->
-<!--            </if>-->
             <if test="price != null "> and price = #{price}</if>
             <if test="equipPicture != null  and equipPicture != ''"> and equip_picture = #{equipPicture}</if>
             <if test="longth != null  and longth != ''"> and longth = #{longth}</if>

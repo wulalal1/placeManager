@@ -29,7 +29,7 @@ public class Equipment extends BaseEntity
     private String equipName;
 
     /** 器材类型 */
-    private String equipType;
+    private Integer equipType;
 
     /** 单价 */
     private BigDecimal price;
@@ -92,16 +92,17 @@ public class Equipment extends BaseEntity
     {
         return equipName;
     }
-    public void setEquipType(String equipType) 
-    {
-        this.equipType = equipType;
-    }
 
-    public String getEquipType() 
-    {
+    public Integer getEquipType() {
         return equipType;
     }
-    public void setPrice(BigDecimal price) 
+
+    public Equipment setEquipType(Integer equipType) {
+        this.equipType = equipType;
+        return this;
+    }
+
+    public void setPrice(BigDecimal price)
     {
         this.price = price;
     }
