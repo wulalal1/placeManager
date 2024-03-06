@@ -32,6 +32,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="equipCode != null  and equipCode != ''"> and equip_code = #{equipCode}</if>
             <if test="equipName != null  and equipName != ''"> and equip_name like concat('%', #{equipName}, '%')</if>
             <if test="equipType != null  and equipType != ''"> and equip_type = #{equipType}</if>
+<!--            <if test="equipType != null and equipType.length > 0">-->
+<!--                AND equip_type in-->
+<!--                <foreach collection="equipType" item="businessType" open="(" separator="," close=")">-->
+<!--                    #{businessType}-->
+<!--                </foreach>-->
+<!--            </if>-->
             <if test="price != null "> and price = #{price}</if>
             <if test="equipPicture != null  and equipPicture != ''"> and equip_picture = #{equipPicture}</if>
             <if test="longth != null  and longth != ''"> and longth = #{longth}</if>
@@ -41,7 +47,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="number != null "> and number = #{number}</if>
             <if test="status != null  and status != ''"> and status = #{status}</if>
             <if test="producer != null  and producer != ''"> and producer = #{producer}</if>
-            <if test="purchasingDate != null "> and purchasing_date = #{purchasingDate}</if>
+<!--            <if test="purchasingDate != null "> and purchasing_date = #{purchasingDate}</if>-->
+            <if test="purchasingDate != null and purchasingDate != ''">
+                AND purchasing_date like concat('%', #{purchasingDate}, '%')
+            </if>
+            <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+                AND purchasing_date &gt;= #{params.beginTime}
+            </if>
+            <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+                AND purchasing_date &lt;= #{params.endTime}
+            </if>
             <if test="remarks != null  and remarks != ''"> and remarks = #{remarks}</if>
         </where>
     </select>
