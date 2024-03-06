@@ -11,7 +11,7 @@
  Target Server Version : 80027
  File Encoding         : 65001
 
- Date: 05/03/2024 21:39:49
+ Date: 06/03/2024 10:49:17
 */
 
 SET NAMES utf8mb4;
@@ -149,7 +149,7 @@ INSERT INTO `comment` VALUES (22, '话语权', NULL, NULL, 22, '2024-01-27 14:04
 -- ----------------------------
 DROP TABLE IF EXISTS `equipment`;
 CREATE TABLE `equipment`  (
-  `id` int(0) NOT NULL COMMENT '序号',
+  `id` int(0) NOT NULL AUTO_INCREMENT COMMENT '序号',
   `equip_code` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '器材编号',
   `equip_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '器材名称',
   `equip_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '器材类型',
@@ -170,7 +170,16 @@ CREATE TABLE `equipment`  (
 -- ----------------------------
 -- Records of equipment
 -- ----------------------------
-INSERT INTO `equipment` VALUES (1, 'ck00123', '羽毛球拍', '1', 25.60, 'http://localhost:9090/files/1709643728979-微信截图_20240303221827.png', '11', '12', '4', 60, 55, '1', '几个号', '2024-03-04 08:00:00', '524');
+INSERT INTO `equipment` VALUES (1, 'ck001234', '羽毛球拍', '0', 25.60, 'http://localhost:9090/files/1709691197814-微信截图_20240303222023.png', '11', '12', '4', 60, 55, '1', '几个号', '2024-03-04 08:00:00', '524');
+INSERT INTO `equipment` VALUES (2, 'ck00321', '羽毛球', '1', 22.00, 'http://localhost:9090/files/1709692173581-羽毛球.jpg', '10', NULL, NULL, NULL, 10, NULL, NULL, '2024-03-06 08:00:00', NULL);
+INSERT INTO `equipment` VALUES (7, 'ck00123', '羽毛球拍', '1', 25.60, 'http://localhost:9090/files/1709643728979-微信截图_20240303221827.png', '11', '12', '4', 60, 55, '1', '几个号', '2024-03-04 08:00:00', '524');
+INSERT INTO `equipment` VALUES (8, 'ck00123', '羽毛球拍', '1', 25.60, 'http://localhost:9090/files/1709643728979-微信截图_20240303221827.png', '11', '12', '4', 60, 55, '1', '几个号', '2024-03-04 08:00:00', '524');
+INSERT INTO `equipment` VALUES (9, 'ck00123', '羽毛球拍', '1', 25.60, 'http://localhost:9090/files/1709643728979-微信截图_20240303221827.png', '11', '12', '4', 60, 55, '1', '几个号', '2024-03-04 08:00:00', '524');
+INSERT INTO `equipment` VALUES (10, 'ck00123', '羽毛球拍', '1', 25.60, 'http://localhost:9090/files/1709643728979-微信截图_20240303221827.png', '11', '12', '4', 60, 55, '1', '几个号', '2024-03-04 08:00:00', '524');
+INSERT INTO `equipment` VALUES (11, 'ck00123', '羽毛球拍', '1', 25.60, 'http://localhost:9090/files/1709643728979-微信截图_20240303221827.png', '11', '12', '4', 60, 55, '1', '几个号', '2024-03-04 08:00:00', '524');
+INSERT INTO `equipment` VALUES (12, 'ck00123', '羽毛球拍', '1', 25.60, 'http://localhost:9090/files/1709643728979-微信截图_20240303221827.png', '11', '12', '4', 60, 55, '1', '几个号', '2024-03-04 08:00:00', '524');
+INSERT INTO `equipment` VALUES (13, 'ck00123', '羽毛球拍', '1', 25.60, 'http://localhost:9090/files/1709643728979-微信截图_20240303221827.png', '11', '12', '4', 60, 55, '1', '几个号', '2024-03-04 08:00:00', '524');
+INSERT INTO `equipment` VALUES (15, 'ck00123', '羽毛球拍', '1', 25.60, 'http://localhost:9090/files/1709643728979-微信截图_20240303221827.png', '11', '12', '4', 60, 55, '1', '几个号', '2024-03-04 08:00:00', '524');
 
 -- ----------------------------
 -- Table structure for likes
