@@ -51,10 +51,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where id = #{id}
     </select>
         
-    <insert id="insertEquipment" parameterType="com.example.domain.Equipment">
+    <insert id="insertEquipment" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="com.example.domain.Equipment">
         insert into equipment
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">id,</if>
+<!--            <if test="id != null">id,</if>-->
             <if test="equipCode != null and equipCode != ''">equip_code,</if>
             <if test="equipName != null and equipName != ''">equip_name,</if>
             <if test="equipType != null">equip_type,</if>
