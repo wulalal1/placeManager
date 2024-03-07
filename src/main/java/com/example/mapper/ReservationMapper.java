@@ -29,7 +29,7 @@ public interface ReservationMapper {
      * @author Whhh
      * @date 2024/02/15
      **/
-    int delete(int id);
+    int delete(Integer id);
 
     /**
      * 更新
@@ -59,17 +59,17 @@ public interface ReservationMapper {
      **/
     int pageListCount(int offset,int pagesize);
 
-    @Select("select * from reservation")
+    @Select("select * from reservation order by create_time desc")
     List<Reservation> selectAll();
 
 
     @Select("select * from reservation where place_code = #{placeCode}")
     Reservation selectByPlaceCode(String placeCode);
 
-    @Select("select * from reservation where user_id = #{userId} order by end_time desc ")
+    @Select("select * from reservation where user_id = #{userId} order by create_time desc")
     List<Reservation> selectMyOrder(int userid);
 
 //    @Select("select * from reservation where end_time >= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) and user_id = #{userId} ")
-    @Select("select * from reservation where end_time < CURRENT_DATE() and user_id = #{userId} order by end_time desc")
+    @Select("select * from reservation where end_time < CURRENT_DATE() and user_id = #{userId} order by create_time desc")
     List<Reservation> selectHisOrder(int userid);
 }

@@ -13,7 +13,7 @@ import java.util.Date;
  */
 @Data
 @EqualsAndHashCode
-public class Reservation implements Serializable {
+public class Reservation extends BaseEntity{
 
     private static final long serialVersionUID = 1L;
 

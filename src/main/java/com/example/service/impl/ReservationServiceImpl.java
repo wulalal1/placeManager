@@ -3,6 +3,7 @@ package com.example.service.impl;
 import com.example.entity.Reservation;
 import com.example.mapper.ReservationMapper;
 import com.example.service.ReservationService;
+import com.example.utils.DateUtils;
 import com.example.utils.TokenUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -28,6 +29,8 @@ public class ReservationServiceImpl implements ReservationService {
     public Object insert(Reservation reservation) {
         Integer id = TokenUtils.getCurrentUser().getId();
         reservation.setReservationStatus("0");
+        reservation.setCreateBy(TokenUtils.getCurrentUser().getUsername());
+        reservation.setCreateTime(DateUtils.getNowDate());
         if (id != null) {
             reservation.setUserId(id);
         }
@@ -35,13 +38,15 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public Object delete(int id) {
+    public Object delete(Integer id) {
         return reservationMapper.delete(id);
     }
 
 
     @Override
     public Object update(Reservation reservation) {
+        reservation.setUpdateBy(TokenUtils.getCurrentUser().getUsername());
+        reservation.setUpdateTime(DateUtils.getNowDate());
         return reservationMapper.update(reservation);
     }
 
@@ -92,6 +97,13 @@ public class ReservationServiceImpl implements ReservationService {
             reservationList = reservationMapper.selectHisOrder(id);
         }
         return PageInfo.of(reservationList);
+    }
+
+    @Override
+    public void deleteBatch(List<Integer> ids) {
+        for (Integer id : ids) {
+            reservationMapper.delete(id);
+        }
     }
 
 }

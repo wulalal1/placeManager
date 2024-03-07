@@ -46,11 +46,20 @@ public class ReservationController {
      * @author Whhh
      * @date 2024/02/15
      **/
-    @RequestMapping("/delete")
-    public Object delete(int id) {
-        return reservationService.delete(id);
+    @DeleteMapping("/delete/{id}")
+    public Object delete(@PathVariable Integer id) {
+        reservationService.delete(id);
+        return Result.success();
     }
 
+    /**
+     * 批量删除
+     */
+    @DeleteMapping("/delete/batch")
+    public Result deleteBatch(@RequestBody List<Integer> ids) {
+        reservationService.deleteBatch(ids);
+        return Result.success();
+    }
     /**
      * 新增和更新
      *

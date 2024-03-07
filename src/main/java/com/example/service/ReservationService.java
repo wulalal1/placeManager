@@ -21,7 +21,7 @@ public interface ReservationService {
     /**
      * 删除
      */
-    public Object delete(int id);
+    public Object delete(Integer id);
 
     /**
      * 更新
@@ -48,5 +48,7 @@ public interface ReservationService {
 
     public PageInfo<Reservation> hisPageList(Integer pageNum, Integer pageSize);
 
+
+    public void deleteBatch(List<Integer> ids);
 
 }
